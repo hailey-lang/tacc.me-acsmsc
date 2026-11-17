@@ -829,6 +829,17 @@ html.bk-turn .bk-cue{animation:gone .25s ease both!important}
 .book::after{content:"";position:absolute;top:0;bottom:0;left:100%;width:90px;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,0))}
 html.bk-turn .book{animation:swipePanel 1.1s cubic-bezier(.72,0,.22,1) 0.85s both}
 html.bk-turn .bk{animation:swipeBook 1.1s cubic-bezier(.72,0,.22,1) 0.85s both}
+
+/* ===== call for speakers ===== */
+.cfs{position:relative;padding:clamp(4rem,8vw,6.5rem) 0;background:linear-gradient(180deg,#0d0d0c,#121210);border-top:1px solid rgba(197,240,50,.35);border-bottom:1px solid rgba(255,255,255,.07)}
+.cfs::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(40% 70% at 88% 20%,rgba(197,240,50,.10),rgba(197,240,50,0) 70%)}
+.cfs-in{position:relative;display:grid;gap:2rem}
+@media (min-width:900px){.cfs-in{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2.5rem,6vw,6rem);align-items:start}}
+.cfs .h2{margin:0}
+.cfs-p{color:var(--cream,#f5f2ea);font-size:clamp(1.05rem,1.35vw,1.2rem);line-height:1.6;max-width:62ch;margin:0}
+.cfs-act{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.6rem;margin-top:2rem}
+.cfs-due{display:flex;align-items:center;gap:.6rem;margin:0;font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,242,234,.75)}
+.cfs-dot{width:7px;height:7px;border-radius:50%;background:var(--lime,#c5f032);box-shadow:0 0 0 4px rgba(197,240,50,.15)}
 </style>
 </head>
 <body>
@@ -932,6 +943,23 @@ html.bk-turn .bk{animation:swipeBook 1.1s cubic-bezier(.72,0,.22,1) 0.85s both}
   </div>
 </header>
 
+
+<!-- CALL FOR SPEAKERS -->
+<section class="cfs" id="speak" aria-labelledby="cfs-h">
+  <div class="wrap cfs-in">
+    <div class="cfs-l">
+      <p class="eyebrow">Now open</p>
+      <h2 class="h2" id="cfs-h">Call for <em>Speakers</em></h2>
+    </div>
+    <div class="cfs-r">
+      <p class="cfs-p">ACS27 Munich brings the people who shape security policy together with the people who secure real places. We’re looking for speakers from government, defense, infrastructure, technology, insurance, law and physical security who have a perspective on how big security decisions play out in the real world. If you, or someone you know, belongs on one of these stages, tell us.</p>
+      <div class="cfs-act">
+        <a class="btn" href="https://forms.gle/JfLpK8yuLUn1ZbQw7" target="_blank" rel="noopener">Submit an idea</a>
+        <p class="cfs-due"><span class="cfs-dot" aria-hidden="true"></span>Submissions close December 11, 2026</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- WHY MUNICH -->
 <section class="munich pad fx l" id="munich" data-ghost="THIS WEEK" style="--gx:90%;--gy:12%;--gx2:8%;--gy2:90%">
@@ -1300,8 +1328,8 @@ html.bk-turn .bk{animation:swipeBook 1.1s cubic-bezier(.72,0,.22,1) 0.85s both}
 
   /* Now / Up next */
   (function(){
-    var ids=['#hero','#munich','#voices','#themes','#agenda','#venue','#experience','#faq','#join'];
-    var names=['Welcome','Why Munich','Voices','Themes','Agenda','Venue','Experience','FAQ','Join us'];
+    var ids=['#hero','#speak','#munich','#voices','#themes','#agenda','#venue','#experience','#faq','#join'];
+    var names=['Welcome','Call for Speakers','Why Munich','Voices','Themes','Agenda','Venue','Experience','FAQ','Join us'];
     var els=ids.map(function(i){return $(i)}), now=$('#subNow'), nn=$('#subNn'), nx=$('#subNext'), cur=-1;
     function swap(el,txt){
       if(reduce){el.textContent=txt;return}
